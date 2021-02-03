@@ -20,20 +20,24 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Grid>
+            
+        </Grid>
+
         <Grid x:Name="TitleBar" Grid.ColumnSpan="2" Background="#0F0F2D" MouseDown="TitleBar_MouseDown">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Width="25" Height="25" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+                <Button Width="25" Height="25" Background="Transparent" Foreground="White" BorderBrush="{x:Null}">
                     <MaterialDesign:PackIcon Kind="Home"/>
                 </Button>
-                <Button Width="25" Height="25" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}">
+                <Button Width="25" Height="25" Background="Transparent" Foreground="White" BorderBrush="{x:Null}">
                     <MaterialDesign:PackIcon Kind="Magnify"/>
                 </Button>
-                <Button Width="25" Height="25" Background="{x:Null}" Foreground="White" BorderBrush="{x:Null}">
+                <Button Width="25" Height="25" Background="Transparent" Foreground="White" BorderBrush="{x:Null}">
                     <MaterialDesign:PackIcon Kind="Add"/>
                 </Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button x:Name="Close" Width="25" Height="25" Background="{x:Null}" Foreground="Red" BorderBrush="{x:Null}" Click="Close_Click">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0">
+                <Button x:Name="Close" Width="25" Height="25" Background="Transparent" Foreground="Red" BorderBrush="{x:Null}" Click="Close_Click">
                     <MaterialDesign:PackIcon Kind="Close"/>
                 </Button>
             </StackPanel>
