@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace CompanyMaster
 {
@@ -20,9 +21,16 @@ namespace CompanyMaster
     /// </summary>
     public partial class MainWindow : Window
     {
+        CompanyDatabaseEntities context = new CompanyDatabaseEntities();
+        CollectionViewSource companiesViewSource;
+        
+
         public MainWindow()
         {
             InitializeComponent();
+            companiesViewSource = ((CollectionViewSource)(FindResource("companiesViewSource")));
+            
+            DataContext = this;
         }
 
 
@@ -34,6 +42,32 @@ namespace CompanyMaster
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            //System.Windows.Data.CollectionViewSource companiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("companiesViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // companiesViewSource.Source = [generic data source]
+            context.Companies.Load();
+            companiesViewSource.Source = context.Companies.Local;
+        }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainFr.Content = new SearchPg();
+            
+        }
+
+        private void HomePg_Click(object sender, RoutedEventArgs e)
+        {
+            MainFr.Content = new HomePg();
+        }
+
+        private void AddPg_Click(object sender, RoutedEventArgs e)
+        {
+            MainFr.Content = new AddPg();
         }
     }
 }
