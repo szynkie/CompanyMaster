@@ -12,17 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
 
 namespace CompanyMaster
 {
     /// <summary>
-    /// Interaction logic for Page3.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class HomePg : Page
+    public partial class SearchPg : Page
     {
-        public HomePg()
+        CompanyDatabaseEntities context = new CompanyDatabaseEntities();
+        CollectionViewSource companiesViewSource;
+        public SearchPg()
         {
             InitializeComponent();
+            companiesViewSource = ((CollectionViewSource)(FindResource("companiesViewSource")));
+
+            DataContext = this;
+            context.Companies.Load();
+            companiesViewSource.Source = context.Companies.Local;
         }
     }
 }

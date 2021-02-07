@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace CompanyMaster
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for Page3.xaml
     /// </summary>
-    public partial class SearchPg : Page
+    public partial class Page3 : Page
     {
-        public SearchPg()
+        public Page3()
         {
             InitializeComponent();
         }
