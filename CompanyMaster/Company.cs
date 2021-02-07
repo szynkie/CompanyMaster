@@ -10,15 +10,18 @@
 namespace CompanyMaster
 {
     using System;
-    using System.Collections.ObjectModel;
+    using System.Collections.Generic;
     
-    public partial class Companies
+    public partial class Company
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string FullName { get; set; }
         public string Street { get; set; }
         public string Zip { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
+        public int CityFK { get; set; }
+        public int BSegFK { get; set; }
+    
+        public virtual BusinessSegment BusinessSegment { get; set; }
+        public virtual City City { get; set; }
     }
 }

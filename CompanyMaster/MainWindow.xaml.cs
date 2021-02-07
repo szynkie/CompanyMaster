@@ -21,7 +21,6 @@ namespace CompanyMaster
     /// </summary>
     public partial class MainWindow : Window
     {
-        CompanyDatabaseEntities context = new CompanyDatabaseEntities();
         CollectionViewSource companiesViewSource;
         
 
@@ -50,8 +49,6 @@ namespace CompanyMaster
             //System.Windows.Data.CollectionViewSource companiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("companiesViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // companiesViewSource.Source = [generic data source]
-            context.Companies.Load();
-            companiesViewSource.Source = context.Companies.Local;
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)

@@ -13,10 +13,10 @@ namespace CompanyMaster
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class CompanyDatabaseEntities : DbContext
+    public partial class CompanyDatabaseEntities1 : DbContext
     {
-        public CompanyDatabaseEntities()
-            : base("name=CompanyDatabaseEntities")
+        public CompanyDatabaseEntities1()
+            : base("name=CompanyDatabaseEntities1")
         {
         }
     
@@ -25,6 +25,9 @@ namespace CompanyMaster
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Companies> Companies { get; set; }
+        public virtual DbSet<BusinessSegment> BusinessSegments { get; set; }
+        public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
     }
 }

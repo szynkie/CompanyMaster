@@ -21,16 +21,30 @@ namespace CompanyMaster
     /// </summary>
     public partial class SearchPg : Page
     {
-        CompanyDatabaseEntities context = new CompanyDatabaseEntities();
-        CollectionViewSource companiesViewSource;
+        
         public SearchPg()
         {
             InitializeComponent();
-            companiesViewSource = ((CollectionViewSource)(FindResource("companiesViewSource")));
+            //CompanyDatabaseEntities1 db = new CompanyDatabaseEntities1();
+            //var comp = from c in db.Companies
+            //           select c;
 
-            DataContext = this;
-            context.Companies.Load();
-            companiesViewSource.Source = context.Companies.Local;
+            ////foreach (var item in comp)
+            ////{
+            ////    Console.WriteLine(item.FullName);
+            ////}
+
+            //this.companyDataGrid.ItemsSource = comp.ToList();
+        }
+
+        private void srchButton_Click(object sender, RoutedEventArgs e)
+        {
+            CompanyDatabaseEntities1 db = new CompanyDatabaseEntities1();
+            var comp = from c in db.Companies
+                       where c.FullName.Contains(srchBox.Text)
+                       select c;
+                       
+            this.companyDataGrid.ItemsSource = comp.ToList();
         }
     }
 }

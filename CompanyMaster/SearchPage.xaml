@@ -8,12 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page1">
     <Page.Resources>
-        <CollectionViewSource x:Key="companiesViewSource" 
-                              d:DesignSource="{d:DesignInstance {x:Type local:Companies}, CreateList=True}"/>
+        <!--<CollectionViewSource x:Key="companiesViewSource"-->
+        <!--d:DesignSource="{d:DesignInstance {x:Type local:Companies}, CreateList=True}"/>-->
+        <CollectionViewSource x:Key="companyViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Company}, CreateList=True}"/>
     </Page.Resources>
 
-    <Grid DataContext="{StaticResource companiesViewSource}">
-        <DataGrid RowHeaderWidth="0" 
+    <Grid DataContext="{StaticResource companyViewSource}">
+        <!--<DataGrid RowHeaderWidth="0" 
                   HorizontalAlignment="Center" 
                   VerticalAlignment="Top"
                   x:Name="companiesDataGrid" 
@@ -69,8 +70,48 @@
                                     CanUserReorder="False" 
                                     IsReadOnly="True"/>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
         <TextBox x:Name="srchBox" HorizontalAlignment="Left" Height="23" Margin="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
-        <Button x:Name="srchButton" Content="Search" HorizontalAlignment="Left" Margin="350,33,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="srchButton" Click="srchButton_Click" Content="Search" HorizontalAlignment="Left" Margin="350,33,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid RowHeaderWidth="0" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Top" 
+                  x:Name="companyDataGrid" 
+                  AutoGenerateColumns="False" 
+                  EnableRowVirtualization="True" 
+                  ItemsSource="{Binding}" 
+                  RowDetailsVisibilityMode="VisibleWhenSelected" 
+                  Background="Transparent" 
+                  BorderBrush="{x:Null}" 
+                  Height="Auto" 
+                  Width="Auto"
+                  Margin="60">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="idColumn1" Binding="{Binding Id}" Header="Id" Width="Auto" 
+                                    CanUserResize="False" 
+                                    CanUserReorder="False" 
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="fullNameColumn1" Binding="{Binding FullName}" Header="Full Name" Width="Auto" 
+                                    CanUserResize="False" 
+                                    CanUserReorder="False" 
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="streetColumn1" Binding="{Binding Street}" Header="Street" Width="Auto" 
+                                    CanUserResize="False" 
+                                    CanUserReorder="False" 
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="zipColumn1" Binding="{Binding Zip}" Header="Zip" Width="Auto" 
+                                    CanUserResize="False" 
+                                    CanUserReorder="False" 
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="cityFKColumn" Binding="{Binding CityFK}" Header="City FK" Width="Auto" 
+                                    CanUserResize="False" 
+                                    CanUserReorder="False" 
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="bSegFKColumn" Binding="{Binding BSegFK}" Header="BSeg FK" Width="Auto" 
+                                    CanUserResize="False" 
+                                    CanUserReorder="False" 
+                                    IsReadOnly="True"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
