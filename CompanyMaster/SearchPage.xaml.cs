@@ -39,11 +39,16 @@ namespace CompanyMaster
 
         private void srchButton_Click(object sender, RoutedEventArgs e)
         {
-            CompanyDatabaseEntities1 db = new CompanyDatabaseEntities1();
+            //CompanyDatabaseEntities1 db = new CompanyDatabaseEntities1();
+            //var comp = from c in db.Companies
+            //           where c.FullName.Contains(srchBox.Text)
+            //           select c;
+
+            //this.companyDataGrid.ItemsSource = comp.ToList();
+            CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
             var comp = from c in db.Companies
                        where c.FullName.Contains(srchBox.Text)
                        select c;
-                       
             this.companyDataGrid.ItemsSource = comp.ToList();
         }
     }

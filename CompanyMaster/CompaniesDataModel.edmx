@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CompaniesDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BusinessSegments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessSegment" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="int" Nullable="false" />
+          <Property Name="BusinessSegmentFK" Type="int" Nullable="false" />
+          <Property Name="TypeFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Types">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Companies__Busin__2A4B4B5E">
+          <End Role="BusinessSegments" Type="Self.BusinessSegments" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessSegments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="BusinessSegmentFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Companies__Count__29572725">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Companies__TypeF__2B3F6F97">
+          <End Role="Types" Type="Self.Types" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="TypeFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CompaniesDatabaseModelStoreContainer">
+          <EntitySet Name="BusinessSegments" EntityType="Self.BusinessSegments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Companies__Busin__2A4B4B5E" Association="Self.FK__Companies__Busin__2A4B4B5E">
+            <End Role="BusinessSegments" EntitySet="BusinessSegments" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Companies__Count__29572725" Association="Self.FK__Companies__Count__29572725">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Companies__TypeF__2B3F6F97" Association="Self.FK__Companies__TypeF__2B3F6F97">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CompaniesDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusinessSegments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessSegment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK__Companies__Busin__2A4B4B5E" FromRole="BusinessSegments" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="Int32" Nullable="false" />
+          <Property Name="BusinessSegmentFK" Type="Int32" Nullable="false" />
+          <Property Name="TypeFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BusinessSegments" Relationship="Self.FK__Companies__Busin__2A4B4B5E" FromRole="Companies" ToRole="BusinessSegments" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK__Companies__Count__29572725" FromRole="Companies" ToRole="Countries" />
+          <NavigationProperty Name="Types" Relationship="Self.FK__Companies__TypeF__2B3F6F97" FromRole="Companies" ToRole="Types" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK__Companies__Count__29572725" FromRole="Countries" ToRole="Companies" />
+        </EntityType>
+        <EntityType Name="Types">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK__Companies__TypeF__2B3F6F97" FromRole="Types" ToRole="Companies" />
+        </EntityType>
+        <Association Name="FK__Companies__Busin__2A4B4B5E">
+          <End Role="BusinessSegments" Type="Self.BusinessSegments" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessSegments">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="BusinessSegmentFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Companies__Count__29572725">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="Country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Companies__TypeF__2B3F6F97">
+          <End Role="Types" Type="Self.Types" Multiplicity="1" />
+          <End Role="Companies" Type="Self.Companies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Companies">
+              <PropertyRef Name="TypeFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CompaniesDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusinessSegments" EntityType="Self.BusinessSegments" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="Types" EntityType="Self.Types" />
+          <AssociationSet Name="FK__Companies__Busin__2A4B4B5E" Association="Self.FK__Companies__Busin__2A4B4B5E">
+            <End Role="BusinessSegments" EntitySet="BusinessSegments" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Companies__Count__29572725" Association="Self.FK__Companies__Count__29572725">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Companies__TypeF__2B3F6F97" Association="Self.FK__Companies__TypeF__2B3F6F97">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Companies" EntitySet="Companies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CompaniesDatabaseModelStoreContainer" CdmEntityContainer="CompaniesDatabaseEntities">
+          <EntitySetMapping Name="BusinessSegments">
+            <EntityTypeMapping TypeName="CompaniesDatabaseModel.BusinessSegments">
+              <MappingFragment StoreEntitySet="BusinessSegments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BusinessSegment" ColumnName="BusinessSegment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="CompaniesDatabaseModel.Companies">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="BusinessSegmentFK" ColumnName="BusinessSegmentFK" />
+                <ScalarProperty Name="TypeFK" ColumnName="TypeFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="CompaniesDatabaseModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="CompaniesDatabaseModel.Types">
+              <MappingFragment StoreEntitySet="Types">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -23,6 +23,13 @@ namespace CompanyMaster
         public Page3()
         {
             InitializeComponent();
+            //CompanyDatabaseEntities1 db = new CompanyDatabaseEntities1();
+            //var comp = from c in db.Companies
+            //           select c;
+
+            //tu ma byc licznik czy cos
+
+            //this.companyDataGrid.ItemsSource = comp.ToList();
         }
     }
 }

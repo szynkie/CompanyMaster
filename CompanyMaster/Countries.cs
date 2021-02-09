@@ -10,20 +10,20 @@
 namespace CompanyMaster
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     
-    public partial class BusinessSegment
+    public partial class Countries
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public BusinessSegment()
+        public Countries()
         {
-            this.Companies = new HashSet<Company>();
+            this.Companies = new ObservableCollection<Companies>();
         }
     
         public int Id { get; set; }
-        public string BusinessSegment1 { get; set; }
+        public string Country { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company> Companies { get; set; }
+        public virtual ObservableCollection<Companies> Companies { get; set; }
     }
 }

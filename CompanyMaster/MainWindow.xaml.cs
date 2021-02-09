@@ -21,15 +21,15 @@ namespace CompanyMaster
     /// </summary>
     public partial class MainWindow : Window
     {
-        CollectionViewSource companiesViewSource;
+        //CollectionViewSource companiesViewSource;
         
 
         public MainWindow()
         {
             InitializeComponent();
-            companiesViewSource = ((CollectionViewSource)(FindResource("companiesViewSource")));
+            //companiesViewSource = ((CollectionViewSource)(FindResource("companiesViewSource")));
             
-            DataContext = this;
+            //DataContext = this;
         }
 
 

@@ -9,6 +9,22 @@
       Title="Page2">
 
     <Grid>
-        <TextBlock Text="DDX"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+        <TextBox x:Name="FullNameBox" HorizontalAlignment="Center" Height="23" Margin="80" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="StreetBox" HorizontalAlignment="Center" Height="23" Margin="120" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CityBox" HorizontalAlignment="Center" Height="23" Margin="160" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="CountryBox" HorizontalAlignment="Center" Margin="340,200,340,0" VerticalAlignment="Top" Width="120">
+            <ComboBox.DataContext>
+                <local:Countries/>
+            </ComboBox.DataContext>
+        </ComboBox>
+        <ComboBox x:Name="SegmentBox" HorizontalAlignment="Center" Margin="340,240,340,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="TypeBox" HorizontalAlignment="Center" Margin="340,280,340,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Center" Margin="362,320,362,0" VerticalAlignment="Top" Width="76"/>
+        <TextBlock HorizontalAlignment="Left" Margin="282,80,0,0" TextWrapping="Wrap" Text="Full Name" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="304,120,0,0" TextWrapping="Wrap" Text="Street" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="315,160,0,0" TextWrapping="Wrap" Text="City" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="293,200,0,0" TextWrapping="Wrap" Text="Country" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="240,240,0,0" TextWrapping="Wrap" Text="Business Segment" VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="310,280,0,0" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top" Foreground="White"/>
     </Grid>
 </Page>
