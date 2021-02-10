@@ -22,37 +22,12 @@ namespace CompanyMaster
     /// </summary>
     public partial class AddPg : Page
     {
-        //CompaniesDatabaseEntities dc = new CompaniesDatabaseEntities();
         public AddPg()
         {
             InitializeComponent();
             fillComboBox();
             fillComboBoxBS();
             fillComboBoxTp();
-            //bindCountry();
-            //bindBS();
-            //bindTps();
-            //using (SqlConnection conn = new SqlConnection(@"data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"))
-            //{
-            //    try
-            //    {
-            //        string query = "select Country from Countries";
-            //        SqlDataAdapter da = new SqlDataAdapter(query, conn);
-            //        conn.Open();
-            //        DataSet ds = new DataSet();
-            //        da.Fill(ds, "Country");
-            //        //CountryBox.DisplayMember = "Country";
-            //        //CountryBox.ValueMember = "Country";
-            //        //CityBox.DataSource = ds.Tables["Country"];
-
-
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        // write exception info to log or anything else
-            //        MessageBox.Show("Error occured!");
-            //    }
-            //}
         }
         void fillComboBox()
         {
@@ -66,7 +41,8 @@ namespace CompanyMaster
                 while (dr.Read())
                 {
                     string Country = dr.GetString(1);
-                    CountryBox.Items.Add(Country);
+                    int Id = dr.GetInt32(0);
+                    CountryBox.Items.Add(Id+" "+Country);
                 }
                 conn.Close();
             }
@@ -87,7 +63,8 @@ namespace CompanyMaster
                 while (dr1.Read())
                 {
                     string BusinessSegment = dr1.GetString(1);
-                    SegmentBox.Items.Add(BusinessSegment);
+                    int Id = dr1.GetInt32(0);
+                    SegmentBox.Items.Add(Id+" "+BusinessSegment);
                 }
                 conn1.Close();
             }
@@ -108,7 +85,8 @@ namespace CompanyMaster
                 while (dr2.Read())
                 {
                     string Type = dr2.GetString(1);
-                    TypeBox.Items.Add(Type);
+                    int Id = dr2.GetInt32(0);
+                    TypeBox.Items.Add(Id+" "+Type);
                 }
                 conn2.Close();
             }
@@ -117,39 +95,23 @@ namespace CompanyMaster
                 MessageBox.Show(ex.Message);
             }
         }
-        //public List<Countries> Coun { get; set; }
-        //public List<BusinessSegments> BS { get; set; }
-        ////public List<Type> Tps { get; set; }
 
-        ////private void bindTps()
-        ////{
-        ////    //throw new NotImplementedException();
-        ////    //CompaniesDatabaseEntities dc = new CompaniesDatabaseEntities();
-        ////    //var item = dc.Types.ToList();
-        ////    //Tps = item;
-        ////    //DataContext = Tps;
-
-        ////}
-
-        //private void bindBS()
-        //{
-        //    //CompaniesDatabaseEntities dc = new CompaniesDatabaseEntities();
-        //    var item = dc.BusinessSegments.ToList();
-        //    BS = item;
-        //    DataContext = BS;
-        //}
-
-
-
-        //private void bindCountry()
-        //{
-        //    //throw new NotImplementedException();
-        //    //CompaniesDatabaseEntities dc = new CompaniesDatabaseEntities();
-        //    var item = dc.Countries.ToList();
-        //    Coun = item;
-        //    DataContext = Coun;
-        //}
-
-
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection conn3 = new SqlConnection(@"data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+            try
+            {
+                conn3.Open();
+                string query3 = "insert into Companies (FullName,Street,City,Country,BusinessSegmentFK,TypeFK) values ('" + this.FullNameBox.Text + "','" + this.StreetBox.Text + "','" + this.CityBox.Text + "','" + this.CountryBox.Text.Substring(0,1) + "','" + this.SegmentBox.Text.Substring(0,1) + "','" + this.TypeBox.Text.Substring(0,1) + "')";
+                SqlCommand createCommand3 = new SqlCommand(query3, conn3);
+                createCommand3.ExecuteNonQuery();
+                MessageBox.Show("Saved");
+                conn3.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
