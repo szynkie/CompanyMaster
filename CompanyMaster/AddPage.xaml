@@ -15,7 +15,7 @@
         <ComboBox x:Name="CountryBox" HorizontalAlignment="Center" Margin="340,200,340,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="SegmentBox" HorizontalAlignment="Center" Margin="340,240,340,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="TypeBox" HorizontalAlignment="Center" Margin="340,280,340,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Center" Margin="362,320,362,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="AddButton" Click="AddButton_Click" Content="Add" HorizontalAlignment="Center" Margin="362,320,362,0" VerticalAlignment="Top" Width="76"/>
         <TextBlock HorizontalAlignment="Left" Margin="282,80,0,0" TextWrapping="Wrap" Text="Full Name" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock HorizontalAlignment="Left" Margin="304,120,0,0" TextWrapping="Wrap" Text="Street" VerticalAlignment="Top" Foreground="White"/>
         <TextBlock HorizontalAlignment="Left" Margin="315,160,0,0" TextWrapping="Wrap" Text="City" VerticalAlignment="Top" Foreground="White"/>
