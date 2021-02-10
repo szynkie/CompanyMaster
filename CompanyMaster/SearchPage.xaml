@@ -59,5 +59,6 @@
                                     IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Bottom" Width="75" Foreground="Red" Click="deleteButton_Click"/>
     </Grid>
 </Page>

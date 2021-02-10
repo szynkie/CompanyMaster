@@ -51,5 +51,23 @@ namespace CompanyMaster
                        select c;
             this.companyDataGrid.ItemsSource = comp.ToList();
         }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
+            int CId = (companyDataGrid.SelectedItem as Companies).Id;
+            string CName = (companyDataGrid.SelectedItem as Companies).FullName;
+            
+
+            Companies comp = (from r in db.Companies where r.Id == CId select r).SingleOrDefault();
+            db.Companies.Remove(comp);
+            db.SaveChanges();
+
+            string xd = CId.ToString();
+            MessageBox.Show("Removed "+xd+" "+CName);
+
+            companyDataGrid.ItemsSource = db.Companies.ToList();
+
+        }
     }
 }
