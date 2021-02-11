@@ -46,10 +46,30 @@ namespace CompanyMaster
 
             //this.companyDataGrid.ItemsSource = comp.ToList();
             CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
-            var comp = from c in db.Companies
-                       where c.FullName.Contains(srchBox.Text)
-                       select c;
-            this.companyDataGrid.ItemsSource = comp.ToList();
+            //var comp = from c in db.Companies
+            //           where c.FullName.Contains(srchBox.Text)
+            //           select c;
+            //this.companyDataGrid.ItemsSource = comp.ToList();
+
+            var query = from com in db.Companies
+
+                        join cou in db.Countries on com.Country equals cou.Id
+                        join bs in db.BusinessSegments on com.BusinessSegmentFK equals bs.Id
+                        join tp in db.Types on com.TypeFK equals tp.Id
+
+                        where com.FullName.Contains(srchBox.Text)
+
+                        select new
+                        {
+                            Id = com.Id,
+                            FullName = com.FullName,
+                            Street = com.Street,
+                            City = com.City,
+                            Country = cou.Country,
+                            BusinessSegmentFK = bs.BusinessSegment,
+                            TypeFK = tp.Type
+                        };
+            this.companyDataGrid.ItemsSource = query.ToList();
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)

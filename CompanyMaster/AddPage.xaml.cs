@@ -108,7 +108,7 @@ namespace CompanyMaster
                 try
                 {
                     conn3.Open();
-                    string query3 = "insert into Companies (FullName,Street,City,Country,BusinessSegmentFK,TypeFK) values ('" + this.FullNameBox.Text + "','" + this.StreetBox.Text + "','" + this.CityBox.Text + "','" + this.CountryBox.Text.Substring(0, 1) + "','" + this.SegmentBox.Text.Substring(0, 1) + "','" + this.TypeBox.Text.Substring(0, 1) + "')";
+                    string query3 = "insert into Companies (FullName,Street,City,Country,BusinessSegmentFK,TypeFK) values ('" + this.FullNameBox.Text + "','" + this.StreetBox.Text + "','" + this.CityBox.Text + "','" + Int32.Parse(this.CountryBox.Text.Substring(0, 1)) + "','" + Int32.Parse(this.SegmentBox.Text.Substring(0, 1)) + "','" + Int32.Parse(this.TypeBox.Text.Substring(0, 1)) + "')";
                     SqlCommand createCommand3 = new SqlCommand(query3, conn3);
                     createCommand3.ExecuteNonQuery();
                     MessageBox.Show("Saved");
