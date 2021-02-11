@@ -27,7 +27,8 @@
                   BorderBrush="{x:Null}" 
                   Height="Auto" 
                   Width="Auto"
-                  Margin="90">
+                  Margin="90"
+                  CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="Auto" 
                                     CanUserResize="False" 
