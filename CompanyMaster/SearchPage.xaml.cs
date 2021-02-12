@@ -77,16 +77,24 @@ namespace CompanyMaster
             if (companyDataGrid.SelectedIndex != -1)
             {
                 CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
-                int CId = (companyDataGrid.SelectedItem as Companies).Id;
-                string CName = (companyDataGrid.SelectedItem as Companies).FullName;
+                
 
+                object item = companyDataGrid.SelectedItem;
+                string ID = (companyDataGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                int di = Int32.Parse(ID);
 
-                Companies comp = (from r in db.Companies where r.Id == CId select r).SingleOrDefault();
+                Companies comp = (from r in db.Companies where r.Id == di select r).SingleOrDefault();
                 db.Companies.Remove(comp);
                 db.SaveChanges();
 
-                string xd = CId.ToString();
-                MessageBox.Show("Removed " + xd + " " + CName);
+                string xd = di.ToString();
+                MessageBox.Show("Removed " + di);
+
+                
+
+
+
+
 
 
                 companyDataGrid.ItemsSource = db.Companies.ToList();
