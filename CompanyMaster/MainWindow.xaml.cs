@@ -21,15 +21,13 @@ namespace CompanyMaster
     /// </summary>
     public partial class MainWindow : Window
     {
-        //CollectionViewSource companiesViewSource;
+       
         
 
         public MainWindow()
         {
             InitializeComponent();
-            //companiesViewSource = ((CollectionViewSource)(FindResource("companiesViewSource")));
             
-            //DataContext = this;
         }
 
 
@@ -46,9 +44,7 @@ namespace CompanyMaster
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //System.Windows.Data.CollectionViewSource companiesViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("companiesViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // companiesViewSource.Source = [generic data source]
+           
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)

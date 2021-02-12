@@ -11,7 +11,7 @@
         <CollectionViewSource x:Key="companiesViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Companies}, CreateList=True}"/>
     </Page.Resources>
 
-
+    
     <Grid>
         <TextBox x:Name="srchBox" HorizontalAlignment="Center" Height="25" Margin="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="320"/>
         <Button x:Name="srchButton" Click="srchButton_Click" Content="Search" HorizontalAlignment="Center" Margin="60" VerticalAlignment="Top" Width="75"/>
@@ -61,5 +61,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="deleteButton" Content="Delete" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Bottom" Width="75" Foreground="Red" Click="deleteButton_Click"/>
+        <Button x:Name="editButton" Content="Edit" HorizontalAlignment="Center" Margin="45" VerticalAlignment="Bottom" Width="75" Click="editButton_Click"/>
+        <Frame x:Name="xd"></Frame>
     </Grid>
+    
+    
 </Page>

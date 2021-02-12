@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Data.Entity;
 
 namespace CompanyMaster
 {
@@ -22,34 +11,15 @@ namespace CompanyMaster
     public partial class SearchPg : Page
     {
         
+
         public SearchPg()
         {
             InitializeComponent();
-            //CompanyDatabaseEntities1 db = new CompanyDatabaseEntities1();
-            //var comp = from c in db.Companies
-            //           select c;
-
-            ////foreach (var item in comp)
-            ////{
-            ////    Console.WriteLine(item.FullName);
-            ////}
-
-            //this.companyDataGrid.ItemsSource = comp.ToList();
         }
 
         private void srchButton_Click(object sender, RoutedEventArgs e)
         {
-            //CompanyDatabaseEntities1 db = new CompanyDatabaseEntities1();
-            //var comp = from c in db.Companies
-            //           where c.FullName.Contains(srchBox.Text)
-            //           select c;
-
-            //this.companyDataGrid.ItemsSource = comp.ToList();
             CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
-            //var comp = from c in db.Companies
-            //           where c.FullName.Contains(srchBox.Text)
-            //           select c;
-            //this.companyDataGrid.ItemsSource = comp.ToList();
 
             var query = from com in db.Companies
 
@@ -77,7 +47,6 @@ namespace CompanyMaster
             if (companyDataGrid.SelectedIndex != -1)
             {
                 CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
-                
 
                 object item = companyDataGrid.SelectedItem;
                 string ID = (companyDataGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
@@ -90,19 +59,27 @@ namespace CompanyMaster
                 string xd = di.ToString();
                 MessageBox.Show("Removed " + di);
 
-                
-
-
-
-
-
-
-                companyDataGrid.ItemsSource = db.Companies.ToList();
+                //pokaz dane
+                srchButton_Click(sender, e);
             }
             else
             {
                 MessageBox.Show("Select record");
             }
+        }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Companies tempComp = (Companies)companyDataGrid.SelectedItem;
+            object item = companyDataGrid.SelectedItem;
+            string ID = (companyDataGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+            int di = Int32.Parse(ID);
+            
+            xd.Navigate(new Page3(di)); // poprawic kiedys
+            
+            
+
+
         }
     }
 }
