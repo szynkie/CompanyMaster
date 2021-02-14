@@ -15,6 +15,7 @@ namespace CompanyMaster
         public SearchPg()
         {
             InitializeComponent();
+            
         }
 
         private void srchButton_Click(object sender, RoutedEventArgs e)

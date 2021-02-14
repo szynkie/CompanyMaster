@@ -18,9 +18,9 @@
 
         <Grid x:Name="TitleBar" Grid.ColumnSpan="2" Background="#0F0F2D" MouseDown="TitleBar_MouseDown">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
-                <Button Width="25" Height="25" Background="Transparent" Foreground="White" BorderBrush="{x:Null}" Click="HomePg_Click">
+                <!--<Button Width="25" Height="25" Background="Transparent" Foreground="White" BorderBrush="{x:Null}" Click="HomePg_Click">
                     <MaterialDesign:PackIcon Kind="Home"/>
-                </Button>
+                </Button>-->
                 <Button x:Name="SearchBtn" Width="25" Height="25" Background="Transparent" Foreground="White" BorderBrush="{x:Null}" Click="SearchBtn_Click">
                     <MaterialDesign:PackIcon Kind="Magnify"/>
                 </Button>

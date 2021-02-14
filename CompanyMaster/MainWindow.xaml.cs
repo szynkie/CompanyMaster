@@ -53,10 +53,10 @@ namespace CompanyMaster
             
         }
 
-        private void HomePg_Click(object sender, RoutedEventArgs e)
-        {
-            MainFr.Content = new Page3();
-        }
+        //private void HomePg_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MainFr.Content = new Page3();
+        //}
 
         private void AddPg_Click(object sender, RoutedEventArgs e)
         {
