@@ -39,7 +39,7 @@ namespace CompanyMaster
 
             int fg = tempComp;
             
-            SqlConnection conn = new SqlConnection(@"data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
                 conn.Open();
@@ -79,7 +79,7 @@ namespace CompanyMaster
 
         void fillComboBox()
         {
-            SqlConnection conn = new SqlConnection(@"data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+            SqlConnection conn = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
                 conn.Open();
@@ -101,7 +101,7 @@ namespace CompanyMaster
         }
         void fillComboBoxBS()
         {
-            SqlConnection conn1 = new SqlConnection(@"data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+            SqlConnection conn1 = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
                 conn1.Open();
@@ -123,7 +123,7 @@ namespace CompanyMaster
         }
         void fillComboBoxTp()
         {
-            SqlConnection conn2 = new SqlConnection(@"data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+            SqlConnection conn2 = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
                 conn2.Open();
@@ -153,7 +153,7 @@ namespace CompanyMaster
             }
             else
             {
-                SqlConnection conn3 = new SqlConnection(@"data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                SqlConnection conn3 = new SqlConnection(Properties.Settings.Default.connString);
                 try
                 {
                     conn3.Open();

@@ -10,12 +10,10 @@ namespace CompanyMaster
     /// </summary>
     public partial class SearchPg : Page
     {
-        
 
         public SearchPg()
         {
             InitializeComponent();
-            
         }
 
         private void srchButton_Click(object sender, RoutedEventArgs e)
@@ -77,10 +75,6 @@ namespace CompanyMaster
             int di = Int32.Parse(ID);
             
             xd.Navigate(new Page3(di)); // poprawic kiedys
-            
-            
-
-
         }
     }
 }

@@ -21,13 +21,10 @@ namespace CompanyMaster
     /// </summary>
     public partial class MainWindow : Window
     {
-       
-        
 
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
 
@@ -44,7 +41,6 @@ namespace CompanyMaster
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-           
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
@@ -52,11 +48,6 @@ namespace CompanyMaster
             MainFr.Content = new SearchPg();
             
         }
-
-        //private void HomePg_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MainFr.Content = new Page3();
-        //}
 
         private void AddPg_Click(object sender, RoutedEventArgs e)
         {
