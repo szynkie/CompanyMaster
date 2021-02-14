@@ -30,7 +30,7 @@
                   Margin="90"
                   CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="Auto" 
+                <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="ID" Width="Auto" 
                                     CanUserResize="False" 
                                     CanUserReorder="False" 
                                     IsReadOnly="True"/>
@@ -50,11 +50,11 @@
                                     CanUserResize="False" 
                                     CanUserReorder="False" 
                                     IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="businessSegmentFKColumn" Binding="{Binding BusinessSegmentFK}" Header="Business Segment FK" Width="Auto" 
+                <DataGridTextColumn x:Name="businessSegmentFKColumn" Binding="{Binding BusinessSegmentFK}" Header="Business Segment" Width="Auto" 
                                     CanUserResize="False" 
                                     CanUserReorder="False" 
                                     IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="typeFKColumn" Binding="{Binding TypeFK}" Header="Type FK" Width="Auto" 
+                <DataGridTextColumn x:Name="typeFKColumn" Binding="{Binding TypeFK}" Header="Type" Width="Auto" 
                                     CanUserResize="False" 
                                     CanUserReorder="False" 
                                     IsReadOnly="True"/>
