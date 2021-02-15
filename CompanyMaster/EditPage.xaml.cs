@@ -17,11 +17,12 @@ using System.Windows.Shapes;
 
 namespace CompanyMaster
 {
-    /// <summary>
-    /// Interaction logic for Page3.xaml
-    /// </summary>
+   /// <summary>
+   /// Strona umozliwiajaca edycje rekordu
+   /// </summary>
     public partial class Page3 : Page
     {
+        //Zmienna sluzaca do identyfikacji rekordu
         public int xd;
         public Page3()
         {
@@ -32,6 +33,7 @@ namespace CompanyMaster
 
         public Page3(int tempComp)
         {
+            //Wypelnianie textboxow danymi z zaznaczonego rkordu
             InitializeComponent();
             fillComboBox();
             fillComboBoxBS();
@@ -74,11 +76,13 @@ namespace CompanyMaster
             {
                 MessageBox.Show(ex.Message);
             }
+            //Zmienna uzyta w innej metodzie
             xd = fg;
         }
 
         void fillComboBox()
         {
+            //Wypelnianie comboboxa country
             SqlConnection conn = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
@@ -101,6 +105,7 @@ namespace CompanyMaster
         }
         void fillComboBoxBS()
         {
+            //Wypelnianie comboboxa business segment
             SqlConnection conn1 = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
@@ -123,6 +128,7 @@ namespace CompanyMaster
         }
         void fillComboBoxTp()
         {
+            //Wypelnianie comboboxa type
             SqlConnection conn2 = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
@@ -146,6 +152,7 @@ namespace CompanyMaster
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
+            //Edycja rekordu
             int re = xd;  
             if (FullNameBox.Text == "" || StreetBox.Text == "" || CityBox.Text == "" || CountryBox.Text == "" || SegmentBox.Text == "" || TypeBox.Text == "")
             {

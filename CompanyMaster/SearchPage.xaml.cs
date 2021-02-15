@@ -6,7 +6,7 @@ using System.Windows.Controls;
 namespace CompanyMaster
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Strona umozliwiajaca wyszukiwanie rekordow w bazie po nazwie 
     /// </summary>
     public partial class SearchPg : Page
     {
@@ -18,6 +18,7 @@ namespace CompanyMaster
 
         private void srchButton_Click(object sender, RoutedEventArgs e)
         {
+            ///Wybieranie wszystich rekordow w tabeli Companies i przypisanie wartosci FK z innych tabel
             CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
 
             var query = from com in db.Companies
@@ -43,6 +44,7 @@ namespace CompanyMaster
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
+            //Usuwanie rekordu z bazy po Id
             if (companyDataGrid.SelectedIndex != -1)
             {
                 CompaniesDatabaseEntities db = new CompaniesDatabaseEntities();
@@ -69,6 +71,7 @@ namespace CompanyMaster
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
+            //Identyfikacja rekordu i przekazanie danych do editpage
             //Companies tempComp = (Companies)companyDataGrid.SelectedItem;
             object item = companyDataGrid.SelectedItem;
             string ID = (companyDataGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;

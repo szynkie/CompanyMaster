@@ -18,7 +18,7 @@ using System.Windows.Shapes;
 namespace CompanyMaster
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Strona umozliwiajaca dodawanie wpisow do bazy
     /// </summary>
     public partial class AddPg : Page
     {
@@ -31,6 +31,7 @@ namespace CompanyMaster
         }
         void fillComboBox()
         {
+            //Wypelnianie comboboxa country
             SqlConnection conn = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
@@ -53,6 +54,7 @@ namespace CompanyMaster
         }
         void fillComboBoxBS()
         {
+            //Wypelnianie comboboxa business segment
             SqlConnection conn1 = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
@@ -75,6 +77,7 @@ namespace CompanyMaster
         }
         void fillComboBoxTp()
         {
+            //Wypelnianie comboboxa type
             SqlConnection conn2 = new SqlConnection(Properties.Settings.Default.connString);
             try
             {
@@ -98,6 +101,7 @@ namespace CompanyMaster
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
+            //Wpisywanie do bazy
             if (FullNameBox.Text == "" || StreetBox.Text == "" || CityBox.Text == "" || CountryBox.Text == "" || SegmentBox.Text == "" || TypeBox.Text == "")
             {
                 MessageBox.Show("One or more fields empty!");
