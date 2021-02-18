@@ -9,3 +9,5 @@ Microsoft SQL Server
 3.Wejdź w Proporties -> Settings.settings
 
 4.Sprawdź poprawność Connection String (connString) =? data source=(localdb)\MSSQLLocalDB;initial catalog=CompaniesDatabase;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework
+
+5.Sprawdź w Server Explorer czy jesteś połączony z serwerem i bazą
